@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigname.demo03.dao.ArticleDao">
+	<!-- 获取热门文章列表 -->
+	<select id="getHotArticles" resultType="com.bigname.demo03.core.Article">
+		select * from Article where 1=1
+	</select>
+	<!-- 根据id获取文章 -->
+	<select id="getArticleById" resultType="com.bigname.demo03.core.Article">
+		SELECT * FROM Article WHERE 1=1 AND id=#{id}
+	</select>
+
+</mapper>
