@@ -13,6 +13,6 @@
 	</update>
 	<!-- 新增用户 -->
 	<insert id="addMember" parameterType="com.bigname.demo03.core.Member">
-		insert into member(name,password,role,course,content) values (#{member.name}, #{member.password}, #{member.role}, #{member.course}， #{member.content})
+		insert into member(`name`,password,role) values (#{member.name}, #{member.password}, #{member.role})
 	</insert>
 </mapper>
