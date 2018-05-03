@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigname.demo03.dao.CourseDao">
+	<!-- 获取课程列表 通过tab -->
+	<select id="getCourse" parameterType="String" resultType="com.bigname.demo03.core.Course">
+		select * from course where 1=1 and tab like "%"#{tab}"%"
+	</select>
+
+	<!-- 获取内容 通过id -->
+	<select id="getCourseById" parameterType="int" resultType="com.bigname.demo03.core.Course">
+		select * from course where 1=1 and id = #{id}
+	</select>
+
+	<!-- 新增内容列表 -->
+	<insert id="setCourse" parameterType="com.bigname.demo03.dto.CourseDTO">
+		insert into course(title,`desc`,`level`,learning_number,tab,img,price,purchase_number) values (#{coursedto.title},#{coursedto.desc},#{coursedto.level},#{coursedto.learningNumber},#{coursedto.tab},#{coursedto.img},#{coursedto.price},#{coursedto.purchaseNumber})
+	</insert>
+
+</mapper>

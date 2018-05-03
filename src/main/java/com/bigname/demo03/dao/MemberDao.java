@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Select;
 
 import com.bigname.demo03.core.Member;
 
-// 其实这个就是mapper
+// 鐢ㄦ埛map
 public interface MemberDao {
 	Member selectMemberByName(@Param("name")String name);
+
+	Integer updateMember(@Param("member")Member member);
+
+	Integer addMember(@Param("member") Member member);
 }

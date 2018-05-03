@@ -4,75 +4,150 @@ import java.sql.Date;
 
 /*
  * 	createBy: LiangSJ
- * 	desc: ÎÄÕÂ
+ * 	desc: å†…å®¹ï¼štype 1æ–‡ç« 2å…¬å‘Š3èµ„æ–™4é—®ç­”5ç•™è¨€6ç¬”è®°
  * */
 
 public class Article {
+
+	public static final int TYPE_ARTICLE = 1;          // æ–‡ç« 
+	public static final int TYPE_NOTICE = 2;           // å…¬å‘Š
+	public static final int TYPE_DATA = 3;             // èµ„æ–™
+	public static final int TYPE_ISSUE = 4;            // é—®ç­”
+	public static final int TYPE_MESSAGE_BOARD = 5;   // ç•™è¨€æ¿
+
 	private int id;
-	// ÎÄÕÂ±êÌâ
 	private String title;
-	// ÎÄÕÂÃèÊö
 	private String desc;
-	// ÎÄÕÂÄÚÈİ
 	private String content;
-	// ÎÄÕÂÈÕÆÚ
-	private Date date;
-	// ÎÄÕÂ±êÇ©
-	private String  tab;
+	private String date;
+	private String tab;
+	private String author;
+	private String img;
+	private String evaluateId;
+	private String type;
+
+	@Override
+	public String toString() {
+		return "Article{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", desc='" + desc + '\'' +
+				", content='" + content + '\'' +
+				", date=" + date +
+				", tab='" + tab + '\'' +
+				", author='" + author + '\'' +
+				", img='" + img + '\'' +
+				", evaluateId='" + evaluateId + '\'' +
+				", type='" + type + '\'' +
+				'}';
+	}
+
+	public Article() {
+	}
+
+	public Article(String title, String desc, String content, String date, String tab, String author, String img, String evaluateId, String type) {
+
+		this.title = title;
+		this.desc = desc;
+		this.content = content;
+		this.date = date;
+		this.tab = tab;
+		this.author = author;
+		this.img = img;
+		this.evaluateId = evaluateId;
+		this.type = type;
+	}
+
+	public Article(int id, String title, String desc, String content, String date, String tab, String author, String img, String evaluateId, String type) {
+		this.id = id;
+		this.title = title;
+		this.desc = desc;
+		this.content = content;
+		this.date = date;
+		this.tab = tab;
+		this.author = author;
+		this.img = img;
+		this.evaluateId = evaluateId;
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getDesc() {
 		return desc;
 	}
+
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate() {
+
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+
+	public void setDate(String date) {
 		this.date = date;
 	}
+
 	public String getTab() {
 		return tab;
 	}
+
 	public void setTab(String tab) {
 		this.tab = tab;
 	}
-	public Article(int id, String title, String desc, String content,
-			Date date, String tab) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.desc = desc;
-		this.content = content;
-		this.date = date;
-		this.tab = tab;
+
+	public String getAuthor() {
+		return author;
 	}
-	public Article() {
-		super();
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", desc=" + desc
-				+ ", content=" + content + ", date=" + date + ", tab=" + tab
-				+ "]";
+
+	public String getImg() {
+		return img;
 	}
-	
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getEvaluateId() {
+		return evaluateId;
+	}
+
+	public void setEvaluateId(String evaluateId) {
+		this.evaluateId = evaluateId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }

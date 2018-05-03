@@ -2,6 +2,9 @@ package com.bigname.demo03.function.impl;
 
 import java.util.List;
 
+import com.bigname.demo03.core.Evaluate;
+import com.bigname.demo03.dao.EvaluateDao;
+import com.bigname.demo03.dto.RequestResult;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bigname.common.CoreToDtoUtil;
@@ -17,17 +20,32 @@ public class ArticleFunctionImpl implements  IArticleFunction{
 	@Autowired
 	ArticleDao aDao;
 
+	@Autowired
+	EvaluateDao eDao;
 
-	/* 获取热门文章 */
-	public List<ArticleDTO> getHotArticles() {
-		List<Article> aList = aDao.getHotArticles();
-		return CoreToDtoUtil.articleList2ArticleDTOList(aList);
+
+	/* 获取内容 */
+	public List<ArticleDTO> getContent(int type) {
+		List<ArticleDTO> articleDTOS = CoreToDtoUtil.articleList2ArticleDTOList(aDao.getContent(type));
+		for(ArticleDTO article : articleDTOS) {
+			int articleId = article.getId();
+			List<Evaluate> evaluate = eDao.getEvaluate(articleId, type);
+			article.setEvaluateDTOList(CoreToDtoUtil.evaluateList2EvaluateDTOList(evaluate));
+		}
+		return articleDTOS;
 	}
 
-	/* 根据id获取文章 */
-	public ArticleDTO getArticleById(int id) {
-		ArticleDTO aDto = CoreToDtoUtil.article2ArticleDTO(this.aDao.getArticleById(id));
-		return aDto;
+	public Integer setContent(ArticleDTO articleDTO) {
+		Integer result = aDao.setContent(articleDTO);
+		return result;
 	}
+
+	public ArticleDTO getContentById(int id) {
+		ArticleDTO articleDTO = CoreToDtoUtil.article2ArticleDTO(aDao.getContentById(id));
+		List<Evaluate> evaluate = eDao.getEvaluate(articleDTO.getId(), Integer.parseInt(articleDTO.getType()));
+		articleDTO.setEvaluateDTOList(CoreToDtoUtil.evaluateList2EvaluateDTOList(evaluate));
+		return articleDTO;
+	}
+
 
 }

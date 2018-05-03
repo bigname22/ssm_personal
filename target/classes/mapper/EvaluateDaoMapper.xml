@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigname.demo03.dao.EvaluateDao">
+	<!-- 查询某文章的评论 -->
+	<select id="getEvaluate" resultType="com.bigname.demo03.core.Evaluate" parameterType="int">
+		select * from evaluate where article_id = #{articleId} and type = #{type}
+	</select>
+
+	<!-- 新增评价 -->
+	<insert id="setEvaluate" parameterType="com.bigname.demo03.dto.EvaluateDTO">
+		insert into evaluate(author,article_id,`date`,title,content,`desc`,`type`) values (#{evaluatedto.author},#{evaluatedto.articleId},#{evaluatedto.date},#{evaluatedto.title},#{evaluatedto.content},#{evaluatedto.desc},#{evaluatedto.type})
+	</insert>
+</mapper>

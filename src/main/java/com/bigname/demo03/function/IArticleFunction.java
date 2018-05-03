@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IArticleFunction {
 	
-	// 获取热门文章
-	List<ArticleDTO> getHotArticles();
+	// 获取内容
+	List<ArticleDTO> getContent(int type);
 
-	// 根据id查询文章
-	ArticleDTO getArticleById(int id);
+	// 增加内容
+	Integer setContent(ArticleDTO articleDTO);
+
+	// 获取内容 通过id查找
+	ArticleDTO getContentById(int id);
 }
